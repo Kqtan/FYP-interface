@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column w-75">
+    <h1 align="center" style="font-weight: bold;">Records</h1>
+    <br>
+    <div class="container home-holder" data-bs-spy="scroll" data-bs-smooth-scroll="true">
+        <ul class="list-group list-group-flush" id="messages">
+            {% for message in user.message %}
+                <li class="list-group-item">
+                    <div class="item-box" onClick="openMessage({{ message.message_id }})">
+                        <span class="item-title">{{ message.title }}</span>
+                        {% if message.category == "Sci/Tech" %}
+                            <span class="badge badge-scitech">{{ message.category }}</span>
+                        {% else %}
+                            <span class="badge badge-{{ message.category|lower }}">{{ message.category }}</span>
+                        {% endif %}
+                        <button type="button" class="close" onClick="deleteMessage({{ message.message_id }})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <hr>
+
+    <div align="center">
+        <a href="/view/add_new" class="btn btn-primary">Add New Message</a>
+    </div>
+</div>
+
+{% endblock %}

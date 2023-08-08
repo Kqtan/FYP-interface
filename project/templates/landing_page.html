@@ -1,0 +1,123 @@
+{% extends "base.html" %} {% block title %}Novum - Categorise and summarise news with us{% endblock %}
+
+{% block content %}
+
+<body class="landing-page">
+    <div class="d-flex flex-column w-100">
+        <section class="hero vh-75 w-100 d-flex text-center">
+            <!-- align-items-center -->
+            <div class="container text-center">
+                <h1 style="font-size: 75px; margin-top: 150px; margin-bottom: 20px; font-family: Bambino;"
+                    >Harness the <span class="emphasis">Potential of AI</span> for Seamless <span class="extra-emphasis">News Management</span></h1>
+                <p class="container text-center w-75" style="font-size: 20px; margin-top: 30px; margin-bottom: 30px;">Welcome to <strong>Novum</strong>, where futuristic technology meets curated news for a truly immersive experience powered by artificial intelligence. Our innovative platform leverages cutting-edge AI techniques to categorize and summarize news articles, revolutionizing the way you consume and manage information.</p>
+                <a href="/a/sign_up" class="cta-button btn btn-primary btn-lg">Get Started</a>
+            </div>
+        </section>
+        <div class="d-flex flex-column arrow-down" style="margin-top: 180px;">
+            <a href="#cutoff" class="arrow-link">
+                <span class="arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+            </a>
+        </div>
+
+        <hr id="cutoff" style="margin-top: 80px;">
+
+        <a href="#" class="back-to-top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+
+        <section id="features" class="features vh-50 w-100 d-flex flex-column" style="margin-top: 30px; margin-bottom: 60px;">
+            <div class="container d-flex flex-column w-75">
+                <h2 style="font-family: Bambino-Bold; text-align: center;">Features</h2>
+                <h5 style="font-family: Bambino; margin-bottom: 20px; text-align: center; color: dimgray;">The future of news management.</h5>
+                <div class="feature">
+                    <h3 style="font-family: Bambino; display: flex;">
+                        <img src="{{ url_for('static', filename='categorisation.png') }}" alt="Feature 1 Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                        Categorisation</h3>
+                    <p style="text-align: justify;">
+                        With Novum, you no longer need to spend hours sifting through lengthy news articles. Our advanced AI algorithms analyze and categorize news content into four main categories: World, Business, Sports, and Sci/Tech. This intelligent categorization ensures that you can easily find and explore news topics that interest you the most.
+                    </p>
+                </div>
+            </div>
+        
+            <div class="container d-flex flex-column w-75">
+                <div class="feature">
+                    <h3 style="font-family: Bambino;">
+                        <img src="{{ url_for('static', filename='summary.png') }}" alt="Feature 2 Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                        Summary</h3>
+                    <p style="text-align: justify;">But that's not all - Novum takes news consumption to the next level with its powerful summarization capabilities. Our AI-powered summarization technology condenses wordy news articles into concise and easy-to-understand summaries, providing you with the key insights and essential information in a single sentence.
+                    </p>
+                </div>
+            </div>
+        
+            <div class="container d-flex flex-column w-75">
+                <div class="feature">
+                    <h3 style="font-family: Bambino;">
+                        <img src="{{ url_for('static', filename='stand.png') }}" alt="Feature 3 Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                        One-shot news collection</h3>
+                    <p style="text-align: justify;">Reading news article from different websites but not all of them is pleasing?
+                        Novum offers a seamless news storage feature. You can save your favorite news articles directly within our system, organizing them effortlessly. Say goodbye to scattered bookmarks and messy folders - with Novum, all your saved news is easily accessible and neatly organized in one place.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr style="margin-top: 20px;">
+
+        <section class="testimonial d-flex flex-column w-100 text-center justify-content-center align-items-center" style="margin-top: 40px; margin-bottom: 20px;">
+            <h2 style="margin-bottom: 20px; font-family: Bambino-Bold;">What Our Customers Say</h2>
+            <div class="quote-container" style="margin-bottom: 10px;">
+                <div class="quote">
+                    <blockquote>"What a fantastic website to have such features that I've been dreaming of!"</blockquote>
+                    <cite>
+                        <strong style="font-size: 20px;">- John Cena</strong>
+                    </cite>
+                </div>
+                <div class="quote">
+                    <blockquote>"I'm impressed with the level of AI technology used in this platform. It's truly groundbreaking!"</blockquote>
+                    <cite>
+                        <strong style="font-size: 20px;">- Jane Smith</strong>
+                    </cite>
+                </div>
+                <div class="quote">
+                    <blockquote>"Novum has completely changed the way I consume news. It's efficient and user-friendly!"</blockquote>
+                    <cite>
+                        <strong style="font-size: 20px;">- Magic Johnson</strong>
+                    </cite>
+                </div>
+                <div class="quote">
+                    <blockquote>"What a website that saves time and effort!"</blockquote>
+                    <cite>
+                        <strong style="font-size: 20px;">- Lebron James</strong>
+                    </cite>
+                </div>
+                <div class="quote">
+                    <blockquote>"This is the one! One that I've been looking for!"</blockquote>
+                    <cite>
+                        <strong style="font-size: 20px;">- Dear Jane</strong>
+                    </cite>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button id="prevBtn" class="carousel-button btn btn-dark btn-lg">
+                    <i class="fas fa-chevron-left"></i>
+                <!-- <img src="{{ url_for('static', filename='left-arrow.png') }}" alt="Previous" /> -->
+                </button>
+                <button id="nextBtn" class="carousel-button btn btn-dark btn-lg">
+                    <i class="fas fa-chevron-right"></i>
+                    <!-- <img src="{{ url_for('static', filename='right-arrow.png') }}" alt="Next" /> -->
+                </button>
+            </div>
+        </section>
+
+        <hr style="margin-top: 60px;">
+
+        <footer>
+            <p>&copy; 2023 Novum. All rights reserved.</p>
+            <p>Special Thanks: Dr Wong, Mr Phoon, Fai gor, DMX Lai</p>
+        </footer>
+
+    </div>
+</body>
+{% endblock %}

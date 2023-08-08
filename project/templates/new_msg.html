@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-md-flex flex-column w-75">
+    <h1 align="center" style="font-weight: bold;">Novum AI</h1>
+    <br>
+    <form method="POST">
+        <div class="form-floating">
+            <textarea 
+                name="title" 
+                id="floatingTextarea" 
+                class="form-control"
+                placeholder="Title"
+                style="height: 20px;"></textarea>
+            <label for="floatingTextarea">Title</label>
+        </div>
+        <br />
+        <div class="form-floating">
+            <textarea 
+                name="message" 
+                id="floatingTextarea2" 
+                class="form-control"
+                placeholder="News content"
+                style="height: 150px;"></textarea>
+            <label for="floatingTextarea2">Content</label>
+        </div>
+        <br />
+        <div align="center">
+
+            <a href="/view" class="btn btn-outline-dark">Back</a>
+
+            <!-- <button type="submit" class="btn btn-primary" name="submit_type" value="submit">Submit Message</button> -->
+            <button type="submit" class="btn btn-primary" name="submit_type" value="submit and summarise" 
+            data-toggle="tooltip" title="The process will take a long time!">
+                <!-- <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span> -->
+                Submit and Summarise
+            </button>
+        </div>
+    </form>
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Warning: Summarisation process will take longer than 30 seconds. So, please be patient!
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<form method="POST" class="w-50">
+        <h3 align="center">Sign Up</h3>
+        <br>
+        <div class="form-floating mb-3">
+            <input 
+                type="email"
+                class="form-control"
+                id="floatingInput" 
+                name="email" 
+                placeholder="Enter email">
+            <label for="floatingInput">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input 
+                type="text"
+                class="form-control"
+                id="floatingInput" 
+                name="username" 
+                placeholder="Enter username">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input 
+                type="text"
+                class="form-control" 
+                id="floatingInput" 
+                name="firstName" 
+                placeholder="Enter first name">
+            <label for="floatingInput">Full Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input 
+                type="password"
+                class="form-control" 
+                id="floatingPassword" 
+                name="password1" 
+                placeholder="Enter password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input 
+                type="password"
+                class="form-control" 
+                id="floatingPassword" 
+                name="password2" 
+                placeholder="Enter password">
+            <label for="floatingPassword">Confirmation Password</label>
+        </div>
+        <br />
+        <div class="d-md-flex justify-content-md-end">
+            <button
+            type="submit"
+            class="btn btn-primary">Submit</button>
+        </div>
+    
+</form>
+{% endblock %}

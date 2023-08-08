@@ -1,0 +1,142 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %}
+
+{% block content %}
+<body style="background-color: #F8F8FF;">
+    <!-- #F8F8FF #ADD8E6-->
+    <div class="d-md-flex flex-column w-100">
+        <h1 align="center" style="font-weight: bold;">Profile</h1>
+        <!-- <section class="vh-75 w-50"> -->
+            <div class="container py-5 h-100 vh-75 w-75">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-12 col-xl">
+
+                    <div class="card" style="border-radius: 15px;" style="background-color: #F8F8FF;">
+                    <div class="card-body text-center">
+                        <div class="mt-3 mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                            class="rounded-circle img-fluid" style="width: 100px;" />
+                        </div>
+                        <h4 class="mb-2">{{ user.name }}</h4>
+                        <p class="text-muted mb-4">@{{ user.username }} <span class="mx-2">|</span> <span>{{ user.email }}</a></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2 mb-2">
+                            <div class="donut-chart-container">
+                                <canvas id="donutChart"></canvas>
+                            </div>
+                            <div class="text-center" style="flex: 1; font-family: Bambino;">
+                                <p class="primary mb-0">Novum Badge</p>
+                                <p class="mb-0 h3">
+                                    {% if msg_len >= 100 %}
+                                        <img src="{{ url_for('static', filename='wow.png') }}" alt="profile badge" style="width: 150px; height: 150px;">
+                                        <h6 class="text-muted" style="font-size: 13px;">VIP</h6>
+                                    {% elif msg_len >= 50 %}
+                                        <img src="{{ url_for('static', filename='robot.png') }}" alt="profile badge" style="width: 150px; height: 150px;">
+                                        <h6 class="text-muted" style="font-size: 13px;">AI Lover</h6>
+                                    {% elif msg_len >= 25 %}
+                                        <img src="{{ url_for('static', filename='star.png') }}" alt="profile badge" style="width: 150px; height: 150px;">
+                                        <h6 class="text-muted" style="font-size: 13px;">All-star</h6>
+                                    {% elif msg_len >= 10 %}
+                                        <img src="{{ url_for('static', filename='quick.png') }}" alt="profile badge" style="width: 150px; height: 150px;">
+                                        <h6 class="text-muted" style="font-size: 13px;">Quick user</h6>
+                                    {% else %}
+                                        <img src="{{ url_for('static', filename='clown.png') }}" alt="profile badge" style="width: 150px; height: 150px;">
+                                        <h6 class="text-muted" style="font-size: 13px;">Newbie</h6>
+                                    {% endif %}
+                                </p>
+                                
+                            </div>
+                            <div class="text-center mt-0" style="flex: 1; font-family: Bambino;">
+                                <p class="mb-2 text-muted h1" style="font-size: 50px;">{{ day }}</p>
+                                <p class="primary mb-0">Days Since Joining</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a href="/view" class="btn btn-primary btn-lg">Back</a>
+            </div>
+        <!-- </section> -->
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var total_count = {{ msg_len }};
+            var categoryCounts = JSON.parse('{{ category_counts|tojson|safe }}');
+            var categories = Object.keys(categoryCounts);
+            var counts = Object.values(categoryCounts);
+
+            var donutChart = new Chart(document.getElementById('donutChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(63, 81, 181, 0.8)',
+                            'rgba(103, 58, 183, 0.8)',
+                            'rgba(156, 39, 176, 0.8)',
+                            'rgba(186, 104, 200, 0.8)',
+                            'rgba(213, 135, 219, 0.8)',
+                            'rgba(233, 30, 99, 0.8)'
+                        ],
+                        hoverBackgroundColor: [
+                            'rgba(48, 63, 159, 1)',
+                            'rgba(81, 45, 168, 1)',
+                            'rgba(123, 31, 162, 1)',
+                            'rgba(142, 68, 173, 1)',
+                            'rgba(165, 94, 234, 1)',
+                            'rgba(194, 24, 91, 1)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Statistics',
+                            font: {
+                                size: 18,
+                                weight: 'normal',
+                                family: 'Bambino',
+                                lineHeight: 1.2,
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            top: 20,
+                            bottom: 20,
+                            left: 20,
+                            right: 20
+                        }
+                    },
+                    animation: {
+                        onComplete: function(animation) {
+                            var chartInstance = animation.chart;
+                            var ctx = chartInstance.ctx;
+                            var centerY = (chartInstance.chartArea.top + chartInstance.chartArea.bottom) / 2;
+
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'middle';
+                            ctx.font = 'bold 36px Bambino-Bold';
+                            ctx.fillStyle = '#000';
+                            ctx.fillText(total_count.toString(), chartInstance.width / 2, centerY);
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+{% endblock %}

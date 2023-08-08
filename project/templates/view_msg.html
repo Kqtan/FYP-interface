@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-md-flex flex-column w-100">
+        <div>
+            <h1 class="message-title">
+                <span>{{ msg.title }}</span>
+                <span class="badge-container">
+                    {% if msg.category == "Sci/Tech" %}
+                        <span class="badge badge-scitech badge-view">{{ msg.category }}</span>
+                    {% else %}
+                        <span class="badge badge-{{ msg.category|lower }} badge-view">{{ msg.category }}</span>
+                    {% endif %}
+                </span>
+            </h1>
+        </div>
+        <div>
+            <h4>Created on {{ date }} 
+                {% if days != 0 %}
+                ({{ days }} days ago)
+                {% endif %}
+            </h4>
+        </div>
+        <div class="message-container">
+            <div class="message-content">{{ msg.content }}</div>
+        </div>
+        <br>
+        {% if msg.summary != '' %}
+        <div class="message-container">
+            <h3 style="font-weight: bold;">Summary</h3>
+            <div class="message-content">{{ msg.summary }}</div>
+        </div>
+        {% endif %}
+        <br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center pb-5">
+            <a href="javascript:history.back()" class="btn btn-dark btn-lg">Back</a>
+        </div>
+        
+    </div>
+{% endblock %}
