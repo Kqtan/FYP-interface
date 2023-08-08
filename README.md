@@ -4,9 +4,11 @@
 <p>However, due to the lack of email data regarding the categorisation tasks. I am applying the AG news data instead.</p>
 <p>Therefore, the interface will be based on the News architecture. You can still enter any email related to World, Business, Sports, or Sci/Tech and the model will still do the trick.</p>
 
-<h2>I name the platform <heavy>Novum</heavy>, which means new in Latin, signifying that this is somehow a 'new' thing TO ME and it is a good experience to expose myself to machine learning and its deployment.
-    I am keen to look for a Data Science job and am ready to take on any challenges with my current skills, hopefully, sharpen my skills if I were to join your team.</h2>
+<p>I name the platform <heavy>Novum</heavy>, which means new in Latin, signifying that this is somehow a 'new' thing TO ME and it is a good experience to expose myself to machine learning and its deployment.
+    I am keen to look for a Data Science job and am ready to take on any challenges with my current skills, hopefully, sharpen my skills if I were to join your team.</p>
+<br>
 
 <h3>I just need a chance to prove myself.</h3>
+
 <h5>Credits: Me ofc.  Supervisor: Dr. Wong Voon Hee</h5>
 <h6>All copyrights reserved lmao</h6>
