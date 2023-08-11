@@ -10,6 +10,7 @@ from transformers import TFPegasusForConditionalGeneration, AutoTokenizer
 import tensorflow as tf
 from project.preprocessing import *
 from datetime import datetime, timedelta
+from nltk.tokenize import word_tokenize
 
 # pegasus = pickle.load(open('pegasus.pkl', 'rb'))
 # pegasus_t = pickle.load(open('pegasus_tokenizer.pkl', 'rb'))
@@ -58,13 +59,17 @@ def add_new():
                 flash("Please don't spam me!", category="error")
 
             else:
-                # expected longest length is 512, sometimes if longer, either truncate or split into smaller segments
-                inputs = pegasus_t(msg, max_length=512, padding="longest", return_tensors="tf", truncation=True)
-                summary_ids = pegasus.generate(inputs["input_ids"], max_length=150, do_sample=False)
-                summary = pegasus_t.batch_decode(summary_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-
                 # category prediction
                 category = predict_category(to_predict, 40)
+                
+                if len(word_tokenize(to_predict)) > 50:
+                    # expected longest length is 512, sometimes if longer, either truncate or split into smaller segments
+                    inputs = pegasus_t(msg, max_length=512, padding="longest", return_tensors="tf", truncation=True)
+                    summary_ids = pegasus.generate(inputs["input_ids"], max_length=150, do_sample=False)
+                    summary = pegasus_t.batch_decode(summary_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+                else:
+                    summary = ""
+
                 # probably let the user choose whether to summarise anot
                 new_msg = Message(title=title, content=msg, summary=summary, category=category, user_id=current_user.user_id)
                 db.session.add(new_msg)
